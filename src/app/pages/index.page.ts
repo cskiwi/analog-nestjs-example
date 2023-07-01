@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
+  imports: [HttpClientModule],
   template: `
     <div>
       <a href="https://analogjs.org/" target="_blank">
@@ -43,7 +45,9 @@ import { Component } from '@angular/core';
 export default class HomeComponent {
   count = 0;
 
+  private readonly http = inject(HttpClient);
+
   increment() {
-    this.count++;
+    this.http.get<number>('/api/increment').subscribe(apiCount => this.count = apiCount);
   }
 }

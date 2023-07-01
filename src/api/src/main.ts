@@ -6,13 +6,13 @@ console.log('NestJS API');
 
 async function createApp(): Promise<INestApplication> {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix('api');
   return app;
 }
 
 if (import.meta.env.PROD) {
   async function bootstrap() {
     const app = await createApp();
+    app.init();
     await app.listen(3000);
   }
 
