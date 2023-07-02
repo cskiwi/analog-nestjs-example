@@ -2,7 +2,8 @@
 
 import analog from '@analogjs/platform';
 import { defineConfig } from 'vite';
-import { ViteAnalogNestjsApp } from './custom-plugin';
+import { VitePluginNode } from 'vite-plugin-node';
+import { nestRequestAdapter } from './nest-request-adapter';
 
 
 // https://vitejs.dev/config/
@@ -15,24 +16,13 @@ export default defineConfig(({ mode }) => ({
     mainFields: ['module'],
   },
   plugins: [
-    analog({
-      apiPrefix: '/api',
+    VitePluginNode({
+      adapter: nestRequestAdapter,
+      appPath: 'src/api/src/main.ts',
+      appName: 'nestjs-api',
+      tsCompiler: 'swc'
     }),
-
-    // VitePluginNode({
-    //   adapter: 'nest',
-    //   appPath: 'src/api/src/main.ts',
-    //   appName: 'nestjs-api',
-    //   tsCompiler: 'swc'
-    // }),
-    ViteAnalogNestjsApp({
-      nodeConfig: {
-        adapter: 'nest',
-        appPath: 'src/api/src/main.ts',
-        appName: 'nestjs-api',
-        tsCompiler: 'swc'
-      }
-    }),
+    analog(),
   ],
   test: {
     globals: true,
@@ -57,3 +47,4 @@ export default defineConfig(({ mode }) => ({
     ]
   }
 }));
+
