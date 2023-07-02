@@ -5,9 +5,6 @@ let prevApp: INestApplication;
 
 export const nestRequestAdapter: RequestAdapter<INestApplication> = async ({ app, req, res, next }) => {
   if (req.url?.startsWith('/api')) {
-    // Rewrite /api to /, so we don't need a prefix in the nest app
-    req.url = req.url.replace(/^\/api\/?(.*)$/, '/$1');
-
     // Call the nest application
     // @ts-expect-error nest app typing error
     if (!app.isInitialized) {
