@@ -34,6 +34,7 @@
     "prismjs": "^1.29.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
+    "rollup-plugin-import-meta-glob": "^1.0.1",
     "rxjs": "~7.5.6",
     "tslib": "^2.4.0",
     "zone.js": "~0.13.0"

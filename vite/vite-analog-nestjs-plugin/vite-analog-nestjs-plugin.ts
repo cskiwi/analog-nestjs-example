@@ -10,6 +10,7 @@ const {
   augmentProgramWithVersioning,
   augmentHostWithCaching,
 } = require('@ngtools/webpack/src/ivy/host');
+let importMetaGlob = require('rollup-plugin-import-meta-glob');
 
 const {
   mergeTransformers,
@@ -64,6 +65,7 @@ export function ViteAnalogNestjsPlugin(): Plugin[] {
             ssr: 'server/src/main.ts',
             rollupOptions: {
               input: 'server/src/main.ts',
+              plugins: [importMetaGlob()]
             },
             outDir: 'dist/server',
           },
@@ -101,7 +103,7 @@ export function ViteAnalogNestjsPlugin(): Plugin[] {
         await buildWithAngularCompiler();
       },
     },
-    RollupPluginSwc(swcOptions),
+    RollupPluginSwc(swcOptions)
   ]
 }
 
