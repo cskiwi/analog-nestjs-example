@@ -7,16 +7,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
-  }
-
-  @Get('increment')
-  increment(): number {
-    return this.appService.increment();
-  }
-
-  @Get('ssr')
-  ssr() {
     return this.appService.render();
   }
 }

@@ -29,7 +29,7 @@ export class AppService {
   }
 
   render() {
-    const indexFile = path.resolve(__dirname, '..', '..', '..', 'index.html');
+    const indexFile = path.resolve(__dirname, '..', '..', 'index.html');
     const document = readFileSync(indexFile, 'utf8');
     return renderApplication(this.bootstrapApplication, {
       url: '/',

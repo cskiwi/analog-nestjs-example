@@ -5,7 +5,7 @@ import { provideFileRouter } from '@analogjs/router';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // provideFileRouter(),
+    provideFileRouter(),
     provideHttpClient(),
     provideClientHydration(),
   ],
