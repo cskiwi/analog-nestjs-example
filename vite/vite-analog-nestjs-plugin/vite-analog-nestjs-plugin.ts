@@ -73,6 +73,8 @@ export function ViteAnalogNestjsPlugin(): Plugin[] {
           optimizeDeps: {
             exclude: [
               '@swc/core',
+              '@angular/platform-server',
+              '@analogjs/router'
             ]
           },
           esbuild: false,

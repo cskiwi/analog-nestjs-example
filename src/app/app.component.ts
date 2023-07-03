@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: ` <router-outlet></router-outlet> `,
+  template: ` <h1>Hello from Analog</h1><router-outlet></router-outlet> `,
   styles: [
     `
       :host {
@@ -17,4 +17,4 @@ import { RouterOutlet } from '@angular/router';
     `,
   ],
 })
-export class AppComponent {}
+export class AppComponent { }
