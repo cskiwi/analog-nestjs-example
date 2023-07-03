@@ -15,6 +15,7 @@ export function bootstrap() {
 }
 
 export default async function render(url: string, document: string) {
+  console.trace();
   const html = await renderApplication(bootstrap, {
     document,
     url,
