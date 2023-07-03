@@ -27,7 +27,6 @@
     "@angular/router": "^16.1.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/ng-universal": "^8.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nx/angular": "^16.4.0",
     "front-matter": "^4.0.2",

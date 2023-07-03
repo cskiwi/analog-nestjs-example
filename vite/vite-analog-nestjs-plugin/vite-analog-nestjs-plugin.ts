@@ -40,7 +40,7 @@ export function ViteAnalogNestjsPlugin(): Plugin[] {
       type: "es6",
     },
     jsc: {
-      target: "es2020",
+      target: "es2019",
       parser: {
         syntax: "typescript",
         decorators: true,
@@ -61,7 +61,7 @@ export function ViteAnalogNestjsPlugin(): Plugin[] {
         >('@angular/compiler-cli')
         return {
           build: {
-            ssr: true,
+            ssr: 'server/src/main.ts',
             rollupOptions: {
               input: 'server/src/main.ts',
             },
@@ -75,6 +75,7 @@ export function ViteAnalogNestjsPlugin(): Plugin[] {
               '@swc/core',
             ]
           },
+          esbuild: false,
         }
       },
       configureServer: async (server) => {

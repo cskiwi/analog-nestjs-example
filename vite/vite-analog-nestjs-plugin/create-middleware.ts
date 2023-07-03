@@ -1,7 +1,6 @@
 import { ViteDevServer, Connect } from "vite";
 import { nestRequestAdapter } from "./nest-request-adapter";
 import { IncomingMessage, ServerResponse } from "http";
-import { config } from "rxjs";
 
 export const createMiddleware = async (
   server: ViteDevServer,
