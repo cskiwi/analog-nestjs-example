@@ -9,10 +9,7 @@ export class AppService {
   }
 
   increment(): number {
-    console.log('incrementing count', this.count);
     this.count++;
-    console.log('incrementing count', this.count);
-
     return this.count;
   }
 }
