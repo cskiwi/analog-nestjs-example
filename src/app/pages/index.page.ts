@@ -1,10 +1,12 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { CountService } from './data-access/count.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [NgIf],
+  providers: [CountService],
   template: `
     <div>
       <a href="https://analogjs.org/" target="_blank">
@@ -17,7 +19,13 @@ import { Component, inject } from '@angular/core';
     <h3>The fullstack meta-framework for Angular!</h3>
 
     <div class="card">
-      <button type="button" (click)="increment()">Count {{ count }}</button>
+      <button
+        type="button"
+        (click)="count.increment$.next()"
+        [disabled]="count.status() !== 'success'"
+      >
+        Count {{ count.count() }}
+      </button>
     </div>
 
     <p class="read-the-docs">
@@ -43,11 +51,5 @@ import { Component, inject } from '@angular/core';
   ],
 })
 export default class HomeComponent {
-  count = 0;
-
-  private readonly http = inject(HttpClient);
-
-  increment() {
-    this.http.get<number>('/api/increment').subscribe(apiCount => this.count = apiCount);
-  }
+  public count = inject(CountService);
 }

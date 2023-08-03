@@ -1,10 +1,9 @@
 /// <reference types="vitest" />
 
 import analog from '@analogjs/platform';
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { VitePluginNode } from 'vite-plugin-node';
 import { nestRequestAdapter } from './nest-request-adapter';
-
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -12,17 +11,18 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: ['es2020'],
   },
-  resolve: {
-    mainFields: ['module'],
-  },
   plugins: [
     VitePluginNode({
       adapter: nestRequestAdapter,
       appPath: 'src/api/src/main.ts',
       appName: 'nestjs-api',
-      tsCompiler: 'swc'
+      tsCompiler: 'swc',
     }),
-    analog(),
+    analog({
+      nitro: {
+        preset: 'vercel',
+      },
+    }),
   ],
   test: {
     globals: true,
@@ -44,7 +44,6 @@ export default defineConfig(({ mode }) => ({
       'class-transformer',
       'class-validator',
       'fastify-swagger',
-    ]
-  }
+    ],
+  },
 }));
-

@@ -4,11 +4,15 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   private count = 0;
 
-  getHello(): string {
-    return 'Hello World from NestJS!';
+  getCount(): number {
+    return this.count;
   }
 
   increment(): number {
-    return this.count++;
+    console.log('incrementing count', this.count);
+    this.count++;
+    console.log('incrementing count', this.count);
+
+    return this.count;
   }
 }
